@@ -1,0 +1,53 @@
+﻿<Window x:Class="E4850.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="376" Width="289"
+        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+        xmlns:local="clr-namespace:E4850">
+    <Window.Resources>
+        <DataTemplate x:Key="myItemDescriptionTemplate">
+            <TextBlock Text="{Binding}" Foreground="Gray" TextAlignment="Left"></TextBlock>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid >
+        <dxb:GalleryControl MouseRightButtonUp="GalleryControl_MouseRightButtonUp_1" Name="galleryControl1" 
+                            AllowDrop="True" 
+                            local:GalleryItemDragDropHelper.EnableGalleryItemDragging="True" >
+            <dxb:GalleryControl.Gallery>
+                <dxb:Gallery ColCount="2" 
+                     ItemCheckMode="None" 
+                     IsGroupCaptionVisible="True"
+                     IsItemCaptionVisible="True"
+                     IsItemDescriptionVisible="True" 
+                     ItemClick="Gallery_ItemClick"
+                     FilterCaption="(click to filter groups)"
+                     ItemDescriptionTemplate="{StaticResource ResourceKey=myItemDescriptionTemplate}"
+                     ItemContentHorizontalAlignment="Left"
+                             Name="gallery1"
+                             Loaded="gallery1_Loaded_1">
+                    <dxb:Gallery.Groups>
+                        <dxb:GalleryItemGroup Name="myGalleryGroup1" 
+                                              Caption="Misc Group" >
+                            <dxb:GalleryItemGroup.Items>
+                                <dxb:GalleryItem Caption="Schedule" Description="Show schedule" Glyph="pack://application:,,,/Images/address-16x16.png"/>
+                                <dxb:GalleryItem Caption="Folder" Description="Folder" Glyph="pack://application:,,,/Images/folder-16x16.png"/>
+                                <dxb:GalleryItem Caption="Roles" Description="Assign roles" Glyph="pack://application:,,,/Images/role-16x16.png"/>
+                            </dxb:GalleryItemGroup.Items>
+                        </dxb:GalleryItemGroup>
+                        <dxb:GalleryItemGroup Name="myGalleryGroup2" 
+                                              Caption="Persons">
+                            <dxb:GalleryItemGroup.Items>
+                                <dxb:GalleryItem Name="Employees" Caption="Employees" Glyph="pack://application:,,,/Images/employee-16x16.png" IsChecked="True"/>
+                                <dxb:GalleryItem Name="Persons" Caption="Persons" Glyph="pack://application:,,,/Images/person-16x16.png"/>
+                                <dxb:GalleryItem Name="Users"  Caption="Users" Glyph="pack://application:,,,/Images/user-16x16.png"/>
+                                <dxb:GalleryItem Name="Country" Caption="Country" Glyph="pack://application:,,,/Images/country-16x16.png"/>
+                                <dxb:GalleryItem Name="Address" Description="Address" Caption="Address" Glyph="pack://application:,,,/Images/address-16x16.png"/>
+                            </dxb:GalleryItemGroup.Items>
+                        </dxb:GalleryItemGroup>
+                    </dxb:Gallery.Groups>
+
+                </dxb:Gallery>
+            </dxb:GalleryControl.Gallery>
+        </dxb:GalleryControl>
+    </Grid>
+</Window>
